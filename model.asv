@@ -1,0 +1,26 @@
+function [T, W] = model()
+
+% impactor [x pos. ; y pos. ; x vel. ; y vel.]
+W = [1.5e11 ; 0 ; 0 ; 10];
+
+[T, W] = ode45(@rate_func, [0 100], W);
+
+end
+
+function r = rate_func(~, W)
+
+P = W(1:2);
+V = W(3:4);
+
+G       = 6.67408e-11;
+m_earth = 5.972e24;
+accel   = (G * m_earth / norm(P)^2) * -(P / norm(P));
+
+dPdt = V;
+dVdt = accel;
+
+r = [dPdt ; dVdt];
+
+end
+
+function [value, isterminal, direction] = earth_collision(~<
