@@ -1,0 +1,7 @@
+The DART spaceship has to travel across space in order to reach the
+Chicxulub Impactor, the asteriod thought to have eradicated the dinosaurs.
+However, we can assume an optimal collision angle because DART's launch
+can be controlled, and we can assume perfect momentum transfer because
+we're working in space. Therefore, rather than model the travel of the
+DART spaceship, we're pre-emptively calculating the momentum transfer
+and modifying the initial momentum of the impactor for each simulation.
