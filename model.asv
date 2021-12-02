@@ -12,19 +12,17 @@ r_impactor = 40; %km
 
 % impactor [x pos. ; y pos. ; x vel. ; y vel.]
 
-theta = 40
+theta = deg2rad(90-50);
 v = 12*3600;
-v_0 = [cosd(theta) * v ;  sind(theta) * v]
+v_0 = [cos(theta) * v, sin(theta) * v]
 
-r_0 = [r_earth ; 0];
+r_0 = [r_earth, 0];
 
 
-x_0 = [r_0 ; v_0];
+W = [r_0 ; v_0];
 
 options = odeset('Events', @collision);
-
-
-[T, W] = ode45(@rate_func, [0, (365*1*24)], x_0);
+[T, W] = ode45(@rate_func, [0:1:4)], W);
 
 function r = rate_func(~, W)
 
