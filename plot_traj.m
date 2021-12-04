@@ -1,16 +1,16 @@
-function res = plot_traj(T, X)
+function res = plot_traj(data)
 
 
 figure
 clf
 x = linspace(0,2*pi,100);
 y = linspace(0,2*pi,100);
-x = 6000*sin(x);
-y = 6000*cos(y);
+x = 60000*sin(x);
+y = 60000*cos(y);
 
 hold on
 
-plot(X(:, 1), X(:, 2))
+plot(data(:, 2), data(:, 3))
 patch(x, y, "green")
 
 xlabel("km")
