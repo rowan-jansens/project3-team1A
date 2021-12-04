@@ -17,7 +17,7 @@ xlabel("km")
 ylabel("km")
 title("Trajectory")
 axis equal
-axis([-10000 60000 -20000 20000])
+axis([-10000 60000 -10000 30000])
 
 
 
