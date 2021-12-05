@@ -6,7 +6,7 @@ r_earth = 6000; %km
 m_earth = 5.972e24; %kg
 
 %inital conditions
-index = time_of_DART_impact / dt;
+index = fix(time_of_DART_impact / dt);
 r_0 = chic_data(index,2:3);
 v_chic = -1 * chic_data(index,4:5);
 
