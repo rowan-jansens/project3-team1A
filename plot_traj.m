@@ -5,8 +5,8 @@ figure
 clf
 x = linspace(0,2*pi,100);
 y = linspace(0,2*pi,100);
-x = 6000*sin(x);
-y = 6000*cos(y);
+x = 6378*sin(x);
+y = 6378*cos(y);
 
 hold on
 

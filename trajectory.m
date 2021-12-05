@@ -2,7 +2,7 @@ function [time, data, impact] = trajectory(time_of_DART_impact, dt, chic_data)
 
 %constants
 G  = 8.6496e-11; %km^3/mh^2
-r_earth = 6000; %km
+r_earth = 6378; %km
 m_earth = 5.972e24; %kg
 
 %inital conditions
@@ -23,8 +23,8 @@ m_dart = 1e11; %kg
 m_chic = 6.28e15; %kg
 
 
-v_new = ((m_dart * v_dart') + (m_chic * v_chic)) / (m_dart + m_chic);
-v_0 = norm(v_chic) * v_new / norm(v_new);
+v_0 = ((m_dart * v_dart') + (m_chic * v_chic)) / (m_dart + m_chic);
+v_0 = norm(v_chic) * v_0 / norm(v_0);  %there is a problem here
 
 
 %metrics

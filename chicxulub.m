@@ -2,7 +2,7 @@ function [res] = chicxulub(hours, dt)
 
 %constants
 G  = 8.6496e-11; %km^3/mh^2
-r_earth = 6000; %km
+r_earth = 6378; %km
 m_earth = 5.972e24; %kg
 
 %"final" condition
