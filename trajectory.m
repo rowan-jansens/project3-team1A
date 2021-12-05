@@ -28,8 +28,8 @@ v_0 = norm(v_chic) * v_new / norm(v_new);
 
 
 %metrics
-da = norm(v_0 - v_chic) * (3600^2 * 1000^2)
-angle = acos(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))) * 180 / pi
+da = norm(v_0 - v_chic) * (3600^2 * 1000^2);
+angle = acos(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))) * 180 / pi;
 
 %combine initial position and velocity
 x_0 = [r_0' ; v_0'];
