@@ -10,7 +10,7 @@ y = 6378*cos(y);
 
 hold on
 
-plot(data(:, 2), data(:, 3), ".-")
+plot(data(:, 2)/1000, data(:, 3)/1000, ".-")
 patch(x, y, "green")
 
 xlabel("km")

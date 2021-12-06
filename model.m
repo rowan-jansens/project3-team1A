@@ -1,8 +1,8 @@
 function [time, data, impact] = model(time_of_DART_impact, dt, chic_data)
 
 %constants
-G  = 8.6496e-11; %km^3/mh^2
-r_earth = 6378; %km
+G  = 6.67e-11; %km^3/mh^2
+r_earth = 6378e3; %km
 m_earth = 5.972e24; %kg
 
 %inital conditions
@@ -15,7 +15,7 @@ v_0 = -1 * chic_data(index,4:5);
 x_0 = [r_0' ; v_0'];
 
 %define evaluation time rage
-tspan = [0:dt:time_of_DART_impact * 0.001];
+tspan = [0:dt:time_of_DART_impact];
 
 %run ODE45
 options = odeset('Events', @collision);
