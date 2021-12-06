@@ -6,7 +6,7 @@ r_earth = 6378e3; %m
 m_earth = 5.972e24; %kg
 
 %inital conditions
-index = int32(time_of_DART_impact / dt)
+index = int32(time_of_DART_impact / dt);
 r_0 = chic_data(index,2:3);
 v_chic = -1 * chic_data(index,4:5);
 
@@ -24,12 +24,12 @@ m_chic = 6.28e15; %kg
 
 
 v_0 = ((m_dart * v_dart') + (m_chic * v_chic)) / (m_dart + m_chic);
-v_0 = norm(v_chic) * v_0 / norm(v_0);  %there is a problem here
+%v_0 = norm(v_chic) * v_0 / norm(v_0);  %there is a problem here
 
 
 %metrics
-da = norm(v_0 - v_chic) * (3600^2 * 1000^2)
-angle = acos(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))) * 180 / pi
+da = norm(v_0 - v_chic) * (3600^2 * 1000^2);
+angle = acos(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))) * 180 / pi;
 
 %combine initial position and velocity
 x_0 = [r_0' ; v_0'];
