@@ -16,10 +16,10 @@ R = [cosd(theta) -sind(theta) ; sind(theta) cosd(theta)];
 
 
 %calculate new inital velocity using conservation of momentum
-s_dart = 6.2e3; %m/s
+s_dart = 6.2e3; %km/h
 v_dart = s_dart * (R* (v_chic / norm(v_chic))');
 
-m_dart = 500; %kg
+m_dart = 420000; %kg
 m_chic = 6.28e15; %kg
 
 
