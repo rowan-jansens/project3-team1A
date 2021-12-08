@@ -16,10 +16,10 @@ R = [cosd(theta) -sind(theta) ; sind(theta) cosd(theta)];
 
 
 %calculate new inital velocity using conservation of momentum
-s_dart = 6.6e3; %km/h
+s_dart = 6.2e3; %m/s
 v_dart = s_dart * (R* (v_chic / norm(v_chic))');
 
-m_dart = 1e11; %kg
+m_dart = 500; %kg
 m_chic = 6.28e15; %kg
 
 
@@ -29,7 +29,7 @@ v_0 = ((m_dart * v_dart') + (m_chic * v_chic)) / (m_dart + m_chic);
 
 %metrics
 da = norm(v_0 - v_chic) * (3600^2 * 1000^2);
-angle = acos(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))) * 180 / pi;
+angle = acos(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))) * 180 / pi
 
 %combine initial position and velocity
 x_0 = [r_0' ; v_0'];
