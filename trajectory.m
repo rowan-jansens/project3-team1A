@@ -22,7 +22,7 @@ v_dart = s_dart * (R* (v_chic / norm(v_chic))')
 
 
 
-m_dart = 420000; %kg
+m_dart = 1e11; %kg
 m_chic = 6.82e15; %kg
 
 
