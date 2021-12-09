@@ -1,4 +1,4 @@
-function [time, data, impact, angle] = trajectory(time_of_DART_impact, dt, chic_data)
+function [time, data] = trajectory1(time_of_DART_impact, dt1, dt2, chic_data)
 
 %constants
 G  = 6.67e-11; 
@@ -27,29 +27,35 @@ m_chic = 6.82e15; %kg
 
 
 v_0 = vpa(((m_dart * v_dart') + (m_chic * v_chic)) / (m_dart + m_chic));
-%v_0 = norm(v_chic) * v_0 / norm(v_0);  %there is a problem here
 
-angle = vpa(acosd(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))));
-angle = double(angle);
 
 v_0 = double(v_0)
 
-%metrics
-da = norm(v_0 - v_chic);
-p = norm(v_chic) * m_chic;
-val = (da  *1000) * m_chic;
 
 
 %combine initial position and velocity
 x_0 = [r_0' ; v_0'];
 
 %define evaluation time rage
-tspan = [0:dt:time_of_DART_impact + 10*dt];
+
+
+tspan1 = 0:dt1:time_of_DART_impact;
+
+
 
 %run ODE45
-options = odeset('Events', @collision);
-[time, data, impact] = ode45(@rate_func, tspan, x_0, options);
+options = odeset('Events', @proximity);
+[time1, data1] = ode45(@rate_func, tspan1, x_0, options);
 
+
+tspan2 = time1(end):dt2:time_of_DART_impact + (3600 * 24 * 10);
+
+
+options = odeset('Events', @collision);
+[time2, data2] = ode45(@rate_func, tspan2, data1(end,1:4)', options);
+
+time = [time1 ; time2];
+data = [data1 ; data2];
 
     %rate function
     function r = rate_func(~, X)
@@ -66,7 +72,20 @@ options = odeset('Events', @collision);
 
     end
 
-    %event function
+
+    function [value, isterminal, direction] = proximity(~, X)
+
+    P = norm(X(1:2));
+    %stop if distace to earth is small
+        %use the half the rough distace between data points as an additional
+        %tolerance
+    value      =  P - (12 * r_earth);%(dt * norm(v_0) / 2);
+    isterminal = 1;
+    direction  = 0;
+
+
+    end
+
     function [value, isterminal, direction] = collision(~, X)
 
     P = norm(X(1:2));
@@ -79,6 +98,9 @@ options = odeset('Events', @collision);
 
 
     end
+
+   
+
 
 
 end
