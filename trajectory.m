@@ -6,7 +6,7 @@ r_earth = 6378e3; %m
 m_earth = 5.972e24; %kg
 
 %inital conditions
-chic_dt = chic_data(2,1) - chic_data(1,1)
+chic_dt = chic_data(2,1) - chic_data(1,1);
 index = int32((time_of_DART_impact + chic_dt)/ chic_dt);
 r_0 = chic_data(index,2:3);
 v_chic = -1 * chic_data(index,4:5);
@@ -18,7 +18,7 @@ R = [cosd(theta) -sind(theta) ; sind(theta) cosd(theta)];
 
 %calculate new inital velocity using conservation of momentum
 s_dart = 17e3; %km/h
-v_dart = s_dart * (R* (v_chic / norm(v_chic))')
+v_dart = s_dart * (R* (v_chic / norm(v_chic))');
 
 
 
@@ -32,7 +32,7 @@ v_0 = vpa(((m_dart * v_dart') + (m_chic * v_chic)) / (m_dart + m_chic));
 angle = vpa(acosd(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))));
 angle = double(angle);
 
-v_0 = double(v_0)
+v_0 = double(v_0);
 
 %metrics
 da = norm(v_0 - v_chic);
