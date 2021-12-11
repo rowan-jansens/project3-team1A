@@ -22,12 +22,12 @@ v_dart = s_dart * (R* (v_chic / norm(v_chic))');
 
 
 
-m_dart = 1e11; %kg
+m_dart = 1e10; %kg
 m_chic = 6.82e15; %kg
 
 
 v_0 = vpa(((m_dart * v_dart') + (m_chic * v_chic)) / (m_dart + m_chic));
-%v_0 = norm(v_chic) * v_0 / norm(v_0);  %there is a problem here
+
 
 angle = vpa(acosd(dot(v_0, v_chic) / (norm(v_0) * norm(v_chic))));
 angle = double(angle);
@@ -44,7 +44,7 @@ val = (da  *1000) * m_chic;
 x_0 = [r_0' ; v_0'];
 
 %define evaluation time rage
-tspan = [0:dt:time_of_DART_impact + 10*dt];
+tspan = [0:dt:time_of_DART_impact + 100*dt];
 
 %run ODE45
 options = odeset('Events', @collision);

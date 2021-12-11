@@ -33,7 +33,7 @@ v_0 = double(v_0);
 
 
 %combine initial position and velocity
-x_0 = [r_0' ; v_0']
+x_0 = [r_0' ; v_0'];
 
 %define evaluation time rage
 
