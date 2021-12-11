@@ -5,7 +5,7 @@ G  = 6.67e-11;%8.6496e-11; %km^3/mh^2
 r_earth = 6378e3; %m
 m_earth = 5.972e24; %kg
 
-%"final" condition
+%"final" conditions; we're calcluating in reverse
 theta = 60;  %impact angle
 v = 12e3;  %impact velocity (m/s)
 v_0 = [cosd(theta) * v ;  sind(theta) * v];
