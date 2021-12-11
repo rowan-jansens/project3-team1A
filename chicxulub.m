@@ -9,7 +9,7 @@ m_earth = 5.972e24; %kg
 theta = 60;  %impact angle
 v = 12e3;  %impact velocity (m/s)
 v_0 = [cosd(theta) * v ;  sind(theta) * v];
-r_0 = [r_earth ; 0];
+r_0 = [0 ; r_earth];
 
 %initial state
 x_0 = [r_0 ; v_0];
