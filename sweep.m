@@ -40,7 +40,7 @@ end
     
 subplot(1,2,2)
 yyaxis right
-plot(t_range / year2sec, impacts(2,:) / 1000)
+plot(t_range / year2sec, impacts(2,:) / 1000 - 6378)
 ylabel("Minimum Distance (km)")
 
 yyaxis left
